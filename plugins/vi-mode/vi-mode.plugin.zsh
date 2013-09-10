@@ -33,3 +33,19 @@ function vi_mode_prompt_info() {
 if [[ "$RPS1" == "" && "$RPROMPT" == "" ]]; then
   RPS1='$(vi_mode_prompt_info)'
 fi
+
+# Fix more vim-like bindings (instead of vi)
+# vi bindings do not kill beyond the start of Insert mode (e.g. enter insert
+# and press backspace and nothing happens)
+bindkey "^W" backward-kill-word    # vi-backward-kill-word
+bindkey "^H" backward-delete-char  # vi-backward-delete-char
+bindkey "^U" backward-kill-line    # vi-kill-line
+bindkey "^?" backward-delete-char  # vi-backward-delete-char
+
+# Home key variants
+bindkey '\e[1~' vi-beginning-of-line
+bindkey '\eOH' vi-beginning-of-line
+
+# End key variants
+bindkey '\e[4~' vi-end-of-line
+bindkey '\eOF' vi-end-of-line
