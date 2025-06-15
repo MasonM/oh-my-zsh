@@ -1,10 +1,20 @@
 if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
 
 PROMPT='%{$fg[$NCOLOR]%}%B%n%b%{$reset_color%}:%{$fg[blue]%}%B%c/%b%{$reset_color%} $(git_prompt_info)%(!.#.$) '
-RPROMPT='${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --} [%*]'
-function zle-line-init zle-keymap-select {
-  RPROMPT="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --} [%*]"
-  zle reset-prompt
+#RPROMPT='${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --} [%*]'
+#function zle-line-init zle-keymap-select {
+#  RPROMPT="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --} [%*]"
+#  zle reset-prompt
+#}
+#
+function zle-line-init zle-keymap-select () {
+  if [ $KEYMAP = vicmd ]; then
+    # the command mode for vi
+    echo -ne "\e[2 q"
+  else
+    # the insert mode for vi
+    echo -ne "\e[4 q"
+  fi
 }
 
 # git theming

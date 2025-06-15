@@ -96,10 +96,11 @@ zle -N zle-line-finish
 
 bindkey -v
 
+# REVERT https://github.com/ohmyzsh/ohmyzsh/commit/2118d35e017eb8c599f3c25863c8263aca307541
 # allow vv to edit the command line (standard behaviour)
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey -M vicmd 'vv' edit-command-line
+bindkey -M vicmd 'v' edit-command-line
 
 # allow ctrl-p, ctrl-n for navigate history (standard behaviour)
 bindkey '^P' up-history
