@@ -222,7 +222,7 @@ is-at-least 2.8 "$git_version" \
   && alias gfa='git fetch --all --prune --jobs=10' \
   || alias gfa='git fetch --all --prune'
 alias gfo='git fetch origin'
-alias gg='git gui citool'
+alias gg='git grep'
 alias gga='git gui citool --amend'
 alias ghh='git help'
 alias glgg='git log --graph'
